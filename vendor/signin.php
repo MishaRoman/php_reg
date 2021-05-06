@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -16,7 +17,8 @@
         <form action="../check_forms/check_auth.php" method="post" class="mt-5">
             <h1>Форма Авторизации</h1>
             <input type="email" name="email" placeholder="Введите ваш email" class="form-control"><br>
-            <input type="password" name="pass" placeholder="Введите пароль" class="form-control"><br>
+            <input type="password" name="pass" placeholder="Введите пароль" class="form-control">
+            <div class="text-danger"><?=$_SESSION['error']?></div>
             <button type="submit" class="btn btn-danger mt-2">Войти</button>
         </form>
         <p class="mt-2">Нету аккаунта? - <a href="../index.php">Зарегистрируйтесь</a>

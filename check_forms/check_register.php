@@ -11,6 +11,7 @@
     $password = md5($_POST['pass']);
     $password_confirm = md5($_POST['pass-confirm']);
 
+    unset($_SESSION['username']);
     $_SESSION['username'] = $name;
 
     if ($password != $password_confirm) {

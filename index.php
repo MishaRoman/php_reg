@@ -10,14 +10,15 @@
 </head>
 <body>
     <div class="container">
-        <form action="register.php" method="post" class="mt-5">
+        <form action="check_forms/check_register.php" method="post" class="mt-5">
             <h1>Форма регистрации</h1>
             <input type="text" name="username" placeholder="Введите ваше имя" class="form-control"><br>
             <input type="email" name="email" placeholder="Введите ваш email" class="form-control"><br>
             <input type="password" name="pass" placeholder="Введите пароль" class="form-control"><br>
-            <input type="password" name="pass-confirm" placeholder="Подтвердите пароль" class="form-control"><br>
-            <button type="submit" class="btn btn-danger">Зарегистрироваться</button>
+            <input type="password" name="pass-confirm" placeholder="Подтвердите пароль" class="form-control">
+            <button type="submit" class="btn btn-danger mt-2">Зарегистрироваться</button>
         </form>
+        <p class="mt-2">У вас уже есть аккаунт? - <a href="vendor/signin.php">Авторизируйтесь</a>
     </div>
 </body>
 </html>

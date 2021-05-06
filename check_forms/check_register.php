@@ -1,5 +1,5 @@
 <?php
-    require_once 'connect.php';
+    require_once '../connect.php';
 
     $name = $_POST['username'];
     $email = $_POST['email'];
@@ -17,5 +17,5 @@
     }
     else {
         $sql = $pdo->query("INSERT INTO `users`(`fullname`, `email`, `password`) VALUES('$name', '$email', '$password')");
-        header('Location: /');
+        header('Location: ../vendor/signin.php');
     }

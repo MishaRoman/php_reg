@@ -18,7 +18,7 @@
             <h1>Форма Авторизации</h1>
             <input type="email" name="email" placeholder="Введите ваш email" class="form-control"><br>
             <input type="password" name="pass" placeholder="Введите пароль" class="form-control">
-            <div class="text-danger"><?=$_SESSION['error']?></div>
+            <div class="text-danger"><?=$_SESSION['error']?></div>      
             <button type="submit" class="btn btn-danger mt-2">Войти</button>
         </form>
         <p class="mt-2">Нету аккаунта? - <a href="../index.php">Зарегистрируйтесь</a>

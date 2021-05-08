@@ -6,7 +6,7 @@
 
     // Присвоение данных из формы в переменные
     $login = $_POST['email'];
-    $password = md5($_POST['pass']);
+    $password = password_hash($_POST['pass'], PASSWORD_DEFAULT);
 
     // Проверка наличия логина и пароля в БД
     $check_user = $pdo->query("SELECT * FROM `users` WHERE `email` = '$login' AND `password` = '$password'");

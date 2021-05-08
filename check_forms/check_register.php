@@ -12,8 +12,8 @@
     // Присваиваем данные из формы в соответствующие переменные
     $name = $_POST['username'];
     $email = $_POST['email'];
-    $password = md5($_POST['pass']);
-    $password_confirm = md5($_POST['pass-confirm']);
+    $password = password_hash($_POST['pass'], PASSWORD_DEFAULT);
+    $password_confirm = password_hash($_POST['pass-confirm'], PASSWORD_DEFAULT);
  
     // Проверяем совпадают ли пароли
     if ($password != $password_confirm) {

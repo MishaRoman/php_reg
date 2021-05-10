@@ -1,6 +1,5 @@
 <?php 
     session_start();
-    $_SESSION['error'] = '';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,10 +19,15 @@
             <input type="email" name="email" placeholder="Введите ваш email" class="form-control"><br>          
             <input type="password" name="pass" placeholder="Введите пароль" class="form-control"><br>
             <input type="password" name="pass-confirm" placeholder="Подтвердите пароль" class="form-control"><br>
-            <div class="text-danger"><?=$_SESSION['error']?></div>
+            <div class="text-danger">
+                <?php echo $_SESSION['error'];
+                $_SESSION['error'] = '';
+                ?>
+            </div>
             <button type="submit" class="btn btn-danger mt-2">Зарегистрироваться</button>
         </form>
         <p class="mt-2">У вас уже есть аккаунт? - <a href="vendor/signin.php">Авторизируйтесь</a>
     </div>
 </body>
 </html>
+<!-- Доделать авторизацию -->

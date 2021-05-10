@@ -8,10 +8,11 @@
 
     $name = $_POST['username'];
     $email = $_POST['email'];
-    $password = md5($_POST['pass']);
-    $password_confirm = md5($_POST['pass-confirm']);
+    $password = $_POST['pass'];
+    $password_confirm = $_POST['pass-confirm'];
 
-    $_SESSION['username'] = $name;
+    $check_email = $pdo->query("SELECT * FROM `users` WHERE `email` = '$email'");
+    $result = $check_email->fetch(PDO::FETCH_ASSOC);
 
     if ($password != $password_confirm) {
         $_SESSION['error'] = 'Пароли не совпадают';
@@ -25,7 +26,13 @@
         $_SESSION['error'] = 'Пароль должен содержать минимум 8 символов';
         redirect();
     }
+    else if ($result) {
+        $_SESSION['error'] = 'Пользователь с таким электронным адресом уже существует';
+        redirect();
+    }
     else {
-        $sql = $pdo->query("INSERT INTO `users`(`username`, `email`, `password`) VALUES('$name', '$email', '$password')");
+        $password = password_hash($password, PASSWORD_DEFAULT);
+        $sql = $pdo->prepare("INSERT INTO `users`(`username`, `email`, `password`) VALUES('$name', '$email', '$password')");
+        $sql->execute();
         header('Location: ../vendor/signin.php');
     }

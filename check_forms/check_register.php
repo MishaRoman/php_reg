@@ -1,11 +1,15 @@
 <?php
+    // Запуск сессии
     session_start();
+    // Подключение файла с настройками БД
     require_once '../connect.php';
 
+    // Функция которая перенаправляет пользователя
     function redirect() {
         header('Location: ../index.php');
     }
 
+    // Присваиваем данные из формы в соответствующие переменные
     $name = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['pass'];
@@ -18,10 +22,12 @@
         $_SESSION['error'] = 'Пароли не совпадают';
         redirect();
     }
+    // Проверка длины имени
     else if (strlen(trim($name)) < 2 || strlen($name) > 60) {
         $_SESSION['error'] = 'Недопустимая длина имени';
         redirect();
     }
+    // Проверка длины пароля
     else if (strlen(trim($password)) < 8) {
         $_SESSION['error'] = 'Пароль должен содержать минимум 8 символов';
         redirect();

@@ -26,8 +26,7 @@
             </div>
             <button type="submit" class="btn btn-danger mt-2">Зарегистрироваться</button>
         </form>
-        <p class="mt-2">У вас уже есть аккаунт? - <a href="vendor/signin.php">Авторизируйтесь</a>
+        <p class="mt-2">У вас уже есть аккаунт? - <a href="inc/signin.php">Авторизируйтесь</a>
     </div>
 </body>
 </html>
-<!-- Доделать авторизацию -->

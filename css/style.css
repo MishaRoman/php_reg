@@ -2,3 +2,6 @@ form {
     text-align: center;
     max-width: 400px;
 }
+a {
+    text-decoration: none;
+}

@@ -7,16 +7,21 @@
     // Присвоение данных из формы в переменные
     $login = $_POST['email'];
     $password = $_POST['pass'];
-    // $password = password_hash($_POST['pass'], PASSWORD_DEFAULT);
 
     $check_user = $pdo->query("SELECT * FROM `users` WHERE `email` = '$login'");
     $result = $check_user->fetch(PDO::FETCH_ASSOC);
+
     // Если пользователь найден
     if ($result) {
-        echo 'Hello';
+        if (password_verify($password, $result['password'])){
+            header('Location: ../inc/auth.php');
+        }
+        else{
+            $_SESSION['error'] = 'Неверный пароль';
+            header('Location: ../inc/signin.php');
+        }
     }
-    // Если пользователь не найден
     else {
-        $_SESSION['error'] = 'Неверный логин или пароль';
-        header('Location: ../vendor/signin.php');
+        $_SESSION['error'] = 'Неверный логин';
+        header('Location: ../inc/signin.php');
     }

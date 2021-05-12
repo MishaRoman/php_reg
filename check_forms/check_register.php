@@ -40,5 +40,5 @@
         $password = password_hash($password, PASSWORD_DEFAULT);
         $sql = $pdo->prepare("INSERT INTO `users`(`username`, `email`, `password`) VALUES('$name', '$email', '$password')");
         $sql->execute();
-        header('Location: ../vendor/signin.php');
+        header('Location: ../inc/signin.php');
     }

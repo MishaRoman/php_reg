@@ -15,9 +15,11 @@
     $password = $_POST['pass'];
     $password_confirm = $_POST['pass-confirm'];
 
+    // Проверяем существует ли пользователь с таким email
     $check_email = $pdo->query("SELECT * FROM `users` WHERE `email` = '$email'");
     $result = $check_email->fetch(PDO::FETCH_ASSOC);
 
+    // Проверяем совпадают ли пароли
     if ($password != $password_confirm) {
         $_SESSION['error'] = 'Пароли не совпадают';
         redirect();
@@ -36,9 +38,14 @@
         $_SESSION['error'] = 'Пользователь с таким электронным адресом уже существует';
         redirect();
     }
+    // Если все проверки пройдены
     else {
+        // Хешируем пароль функцией password_hash()
         $password = password_hash($password, PASSWORD_DEFAULT);
+        // Подготавливаем SQL запрос на добавление данных пользователя в БД
         $sql = $pdo->prepare("INSERT INTO `users`(`username`, `email`, `password`) VALUES('$name', '$email', '$password')");
+        // Выполняем SQL запрос
         $sql->execute();
+        // Перенаправляем пользователя на страницу авторизации
         header('Location: ../inc/signin.php');
     }

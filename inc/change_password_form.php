@@ -25,6 +25,7 @@
             </div>
             <button type="submit" class="btn btn-danger mt-2">Принять</button>
         </form>
+        <p>Чтобы вернуться на главную нажми <a href="auth.php">здесь</a></p>
     </div>
 </body>
 </html>
